@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
         }
       : null;
 
-  Obat.findAll({ where: condition })
+  Obat.findAll({ where: condition, include: ["satuan"] })
     .then((data) => {
       res.send(data);
     })
@@ -65,7 +65,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const ID_OBAT = req.params.ID_OBAT;
 
-  Obat.findByPk(ID_OBAT)
+  Obat.findByPk(ID_OBAT, { include: ["satuan"] })
     .then((data) => {
       res.send(data);
     })

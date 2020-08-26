@@ -22,5 +22,17 @@ db.sequelize = sequelize;
 db.penyakit = require("./penyakit.model.js")(sequelize, Sequelize);
 db.tindakan = require("./tindakan.model.js")(sequelize, Sequelize);
 db.obat = require("./obat.model.js")(sequelize, Sequelize);
+db.satuan = require("./satuan.model.js")(sequelize, Sequelize);
+
+db.satuan.hasOne(db.obat, {
+  foreignKey: "ID_SATUAN",
+  as: "obat",
+  targetKey: "ID_SATUAN",
+});
+db.obat.belongsTo(db.satuan, {
+  foreignKey: "ID_SATUAN",
+  as: "satuan",
+  targetKey: "ID_SATUAN",
+});
 
 module.exports = db;

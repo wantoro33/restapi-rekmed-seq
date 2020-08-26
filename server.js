@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 require("./app/routes/penyakit.route")(app);
 require("./app/routes/tindakan.route")(app);
 require("./app/routes/obat.route")(app);
+require("./app/routes/satuan.route")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3002;
